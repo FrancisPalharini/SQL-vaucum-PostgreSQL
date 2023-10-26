@@ -3,9 +3,13 @@ AS xact_runtime, query
 FROM pg_stat_activity WHERE upper(query) like '%VACUUM%' ORDER BY 
 xact_start; 
 
+
 SELECT relname, last_vacuum, last_autovacuum FROM pg_stat_user_tables;
 
 
 SELECT relname, reloptions
 FROM pg_class
 WHERE reloptions IS not null;
+
+
+select last_vacuum, vacuum_count from pg_stat_all_tables where relname= 'table-name';
